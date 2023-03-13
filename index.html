@@ -19,10 +19,22 @@
 </head>
     <body>
         
-       <header></header>
+       <header>
+            <div class="container">
+                <span>Font Library</span>
+                <select name="iconFilter" id="icon-filter">
+                    <option value="all">all</option>
+                    <option value="animal">animal</option>
+                    <option value="vegetable">vegetable</option>
+                    <option value="user">user</option>
+                </select>
+            </div>
+
+       </header>
+
        <main class="bg-primary">
             <div class="container">
-                <div class="row" id="box-container"></div>
+                <div class="row row-wrap" id="box-container"></div>
             </div>
        </main>
 

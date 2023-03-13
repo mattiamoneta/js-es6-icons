@@ -115,24 +115,36 @@ const boxElements = [
 
 
 const domBoxContainer = document.getElementById('box-container');
+const domSelect = document.getElementById('icon-filter');
+displayIcons('all');
+
+
+domSelect.addEventListener('change',function(){
+    displayIcons(this.value);
+});
 
 
 function displayIcons(filter){
 
     domBoxContainer.innerHTML = "";
+    let filteredBox;
 
-    const filteredBox = boxElements.filter((e) => {
-        if(e.type == filter){
-            return true;
-        }
-    });
+    if (filter != "all"){
+        filteredBox = boxElements.filter((e) => {
+            if(e.type == filter){
+                return true;
+            }
+        });
+    }else{
+        filteredBox = boxElements;
+    }
 
-    filteredBox.forEach((e) => {
+    filteredBox.forEach((e, index) => {
 
         domBoxContainer.innerHTML += `<div class="box">
                                             <div class="box-inner">
                                                 <div class="content">
-                                                    <i class="fa-2x ${e.family} fa-solid fa-${e.name}"></i>
+                                                    <i class="fa-2x ${e.family} fa-solid fa-${e.name}" style="color: ${e.color};"></i>
                                                     <div class="box-caption">${e.name}</div>
                                                 </div>
                                             </div>
@@ -140,5 +152,3 @@ function displayIcons(filter){
 
     });
 }
-
-console.log(displayIcons('user'));

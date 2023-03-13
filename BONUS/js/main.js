@@ -113,17 +113,33 @@ const boxElements = [
 	}
 ];
 
+// Elementi del DOM
 
 const domBoxContainer = document.getElementById('box-container');
 const domSelect = document.getElementById('icon-filter');
+
+// Inserimento voci in Select
+let latestEntry = "";
+domSelect.innerHTML = `<option value="all">all</option>`;
+
+boxElements.forEach((e) => {
+	if (latestEntry != e.type){
+		domSelect.innerHTML += `<option value="${e.type}">${e.type}</option>`;
+		latestEntry = e.type;
+	}
+});
+
+// Inizializzazione pagina
 displayIcons('all');
 
 
+// Click option in select
 domSelect.addEventListener('change',function(){
     displayIcons(this.value);
 });
 
 
+// Rigenera la griglia delle icone
 function displayIcons(filter){
 
     domBoxContainer.innerHTML = "";

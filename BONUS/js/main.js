@@ -171,7 +171,6 @@ function displayIcons(filter){
     });
 }
 
-
 function generateColor(){
 	const random = Math.floor(Math.random() * 16000000);
 	const hex = random.toString(16);
